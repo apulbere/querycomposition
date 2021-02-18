@@ -21,4 +21,8 @@ public interface CostRepository extends JpaRepository<Cost, UUID> {
             "SUM(c.price1), SUM(c.price2)) from Cost c " +
             " WHERE c.productId = :pid GROUP BY c.type ")
     List<TotalCostGroup> find(@Param("pid") UUID productId);
+
+
+    @Query("Select s from Cost s where s.price1 = :#{#req.price1} and s.price2 = :#{#req.price2}")
+    List<Cost> find(PriceQueryRequest req);
 }

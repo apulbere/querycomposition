@@ -2,6 +2,7 @@ package com.apulbere.querycomposition;
 
 import com.apulbere.querycomposition.domain.Cost;
 import com.apulbere.querycomposition.domain.CostRepository;
+import com.apulbere.querycomposition.domain.PriceQueryRequest;
 import com.apulbere.querycomposition.domain.PriceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,5 +34,7 @@ public class QuerycompositionApplication implements CommandLineRunner {
 		System.out.println(costRepository.find(p1));
 		//[TotalCostGroup(super=TotalCost(price1=18.00, price2=89.00), type=RETAIL),
 		// TotalCostGroup(super=TotalCost(price1=22.00, price2=32.00), type=WHOLESALE)]
+
+		System.out.println(costRepository.find(new PriceQueryRequest(new BigDecimal(18), new BigDecimal(89))));
 	}
 }
