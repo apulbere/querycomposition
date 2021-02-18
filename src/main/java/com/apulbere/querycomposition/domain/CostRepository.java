@@ -25,4 +25,7 @@ public interface CostRepository extends JpaRepository<Cost, UUID> {
 
     @Query("Select s from Cost s where s.price1 = :#{#req.price1} and s.price2 = :#{#req.price2}")
     List<Cost> find(PriceQueryRequest req);
+
+    @Query(value = "Select s.* from cost s where s.price1 = :#{#req.price1} and s.price2 = :#{#req.price2}", nativeQuery = true)
+    List<Cost> findNative(PriceQueryRequest req);
 }

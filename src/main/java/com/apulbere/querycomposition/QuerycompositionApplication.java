@@ -36,5 +36,6 @@ public class QuerycompositionApplication implements CommandLineRunner {
 		// TotalCostGroup(super=TotalCost(price1=22.00, price2=32.00), type=WHOLESALE)]
 
 		System.out.println(costRepository.find(new PriceQueryRequest(new BigDecimal(18), new BigDecimal(89))));
+		System.out.println(costRepository.findNative(new PriceQueryRequest(new BigDecimal(18), new BigDecimal(89))));
 	}
 }
